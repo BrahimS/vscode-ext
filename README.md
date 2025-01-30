@@ -1,71 +1,62 @@
 # deepseek-vscode-bs README
 
-This is the README for your extension "deepseek-vscode-bs". After writing up a brief description, we recommend including the following sections.
+The DeepSeek VSCode Extension integrates a chat interface directly into Visual Studio Code, allowing you to interact with the DeepSeek model (deepseek-r1) for conversational AI tasks. This extension provides a seamless way to send messages and receive responses within the editor.
+
+Note: This extension is currently in debugging mode and may contain unfinished features or bugs. Feedback and contributions are welcome!
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+Chat Interface: A built-in webview panel for interacting with the DeepSeek model.
 
-For example if there is an image subfolder under your extension project workspace:
+Streaming Responses: Real-time streaming of responses from the DeepSeek model for a smooth conversational experience.
 
-\!\[feature X\]\(images/feature-x.png\)
+Customizable UI: A simple and clean user interface for typing messages and viewing responses.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+Error Handling: Displays error messages in the chat interface if something goes wrong during the conversation.
+
+![project illustration](https://github.com/BrahimS/vscode-ext/blob/features/src/images/bs.png)
+
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+To use this extension, you need the following:
 
-## Extension Settings
+Visual Studio Code: Ensure you have VSCode installed on your machine.
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+Ollama: The extension uses the ollama library to interact with the DeepSeek model. Make sure you have Ollama installed and running locally.
 
-For example:
+Install Ollama by following the instructions in the [Ollama documentation](https://ollama.com/download).
 
-This extension contributes the following settings:
+Ensure the deepseek-r1:latest model is available in your Ollama instance. You can pull the model using:
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+```
+ollama pull deepseek-r1:latest
+```
 
-## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
 
-## Release Notes
+## Code Overview
+The extension is built using the following key components:
 
-Users appreciate release notes as you update your extension.
+Webview Panel: A custom HTML-based interface for the chat.
 
-### 1.0.0
+Ollama Integration: The ollama.chat method is used to send messages to the DeepSeek model and stream responses.
 
-Initial release of ...
+Message Passing: Communication between the webview and the extension is handled using postMessage.
 
-### 1.0.1
+### Key Files
+extension.ts: The main extension code that registers the command and handles the webview panel.
 
-Fixed issue #.
+webview.html: The HTML template for the chat interface (embedded in the getWebviewContent function).
 
-### 1.1.0
 
-Added features X, Y, and Z.
 
----
+## Debugging Mode
+This extension is currently in debugging mode. This means:
 
-## Following extension guidelines
+The functionality is still being tested and refined.
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+You may encounter bugs or incomplete features.
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+Feedback and bug reports are highly appreciated! Please open an issue in the repository if you encounter any problems.
 
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
